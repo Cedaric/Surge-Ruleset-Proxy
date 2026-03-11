@@ -2,6 +2,9 @@ name = "surge-ruleset-proxy"
 main = "src/index.js"
 compatibility_date = "2026-03-09"
 
-routes = [
-  { pattern = "fleet.ceda.is", custom_domain = true }
-]
+[assets]
+directory = "public"
+
+[[routes]]
+pattern = "fleet.ceda.is"
+custom_domain = true

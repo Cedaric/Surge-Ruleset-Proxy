@@ -1,0 +1,12 @@
+#!name=Unlock Multi APP
+#!desc=Unlock Beer, Spark, ..
+
+[MITM]
+hostname = %APPEND% api.revenuecat.com, buy.itunes.apple.com
+
+[Header Rewrite]
+https:\/\/api\.revenuecat\.com header-del x-revenuecat-etag
+
+[Script]
+Buy = type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,max-size=0,script-path=https://fleet.ceda.is/Mock/verify_receipt.js,script-update-interval=-1
+Revenuecat = type=http-response,pattern=https:\/\/api\.revenuecat\.com,requires-body=1,max-size=0,script-path=https://fleet.ceda.is/Mock/revenuecat.js,script-update-interval=-1
